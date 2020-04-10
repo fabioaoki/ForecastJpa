@@ -7,4 +7,5 @@ import br.com.forecast.dto.CityForecastDto;
 public interface CityForecastRepository extends JpaRepository<CityForecastDto, Long> {
 	
 	CityForecastDto findById(long id);
+
 }

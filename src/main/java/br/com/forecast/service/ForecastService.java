@@ -16,4 +16,9 @@ public class ForecastService  {
 		CityForecastDto retorno = cityForecastRepository.findById(id);
 		return retorno;
 	}
+
+	public CityForecastDto newCity(CityForecastDto cityForecastDto) {
+		CityForecastDto retorno = cityForecastRepository.save(cityForecastDto);
+		return retorno;
+	}
 }

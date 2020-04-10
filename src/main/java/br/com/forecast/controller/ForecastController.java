@@ -1,12 +1,12 @@
 package br.com.forecast.controller;
 
 import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +25,15 @@ public class ForecastController {
 		CityForecastDto cityForecast = forecastService.verify(id);
 			if(Objects.nonNull(cityForecast)) {
 				return new ResponseEntity<CityForecastDto>(cityForecast,HttpStatus.OK);
+			}
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/weather",method = RequestMethod.POST)
+	public ResponseEntity<CityForecastDto> newCity(@RequestBody CityForecastDto cityForecastDto){
+			CityForecastDto newCity = forecastService.newCity(cityForecastDto);
+			if(Objects.nonNull(newCity)){
+				return new ResponseEntity<CityForecastDto>(newCity,HttpStatus.CREATED);
 			}
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
