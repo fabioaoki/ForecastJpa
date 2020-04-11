@@ -31,11 +31,12 @@ public class ForecastController {
 	
 	@RequestMapping(value="/weather",method = RequestMethod.POST)
 	public ResponseEntity<CityForecastDto> newCity(@RequestBody CityForecastDto cityForecastDto){
-			CityForecastDto newCity = forecastService.newCity(cityForecastDto);
-			if(Objects.nonNull(newCity)){
+			if (cityForecastDto.getName() == null || cityForecastDto.getCity() == null ) {
+				return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+			} else {
+				CityForecastDto newCity = forecastService.newCity(cityForecastDto);
 				return new ResponseEntity<CityForecastDto>(newCity,HttpStatus.CREATED);
 			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 }

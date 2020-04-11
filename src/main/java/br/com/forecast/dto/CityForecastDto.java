@@ -23,7 +23,8 @@ public class CityForecastDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
 	@Column(name = "name", nullable = false)
@@ -32,17 +33,17 @@ public class CityForecastDto implements Serializable {
 	@Column(name = "city", nullable = false)
 	private String city;
 	
-	@Column(name = "date_city", nullable = false)
+	@Column(name = "date_city")
 	private Date dateCity;
 
 	public CityForecastDto() {
 	}
 	
-//	@PrePersist
-//    public void prePersist() {
-//        final Date atual = new Date();
-//        dateCity = atual;
-//    }
+	@PrePersist
+    public void prePersist() {
+        final Date atual = new Date();
+        dateCity = atual;
+    }
 
 	public Long getId() {
 		return id;
