@@ -32,7 +32,7 @@ public class ForecastController {
 	@RequestMapping(value="/weather",method = RequestMethod.POST)
 	public ResponseEntity<CityForecastDto> newCity(@RequestBody CityForecastDto cityForecastDto){
 			if (cityForecastDto.getName() == null || cityForecastDto.getCity() == null ) {
-				return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 			} else {
 				CityForecastDto newCity = forecastService.newCity(cityForecastDto);
 				return new ResponseEntity<CityForecastDto>(newCity,HttpStatus.CREATED);
