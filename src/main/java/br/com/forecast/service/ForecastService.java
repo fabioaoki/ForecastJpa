@@ -1,5 +1,8 @@
 package br.com.forecast.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +25,10 @@ public class ForecastService  {
 		retorno.prePersist();
 		cityForecastRepository.save(retorno);
 		return retorno;
+	}
+
+	public ArrayList<CityForecastDto> getAll() {
+		ArrayList<CityForecastDto> retorno = (ArrayList<CityForecastDto>) cityForecastRepository.findAll();
+		return  retorno;
 	}
 }

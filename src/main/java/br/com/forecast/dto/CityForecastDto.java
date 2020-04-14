@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Builder;
 import lombok.Data;
@@ -27,9 +28,11 @@ public class CityForecastDto implements Serializable {
 	@Column(name = "id")
 	private Long id;
 	
+	@NotEmpty(message = "nao pode ser vazio")
 	@Column(name = "name", nullable = false)
 	private String name;
 	
+	@NotEmpty(message = "nao pode ser vazio")
 	@Column(name = "city", nullable = false)
 	private String city;
 	
