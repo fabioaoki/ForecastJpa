@@ -28,11 +28,11 @@ public class CityForecastDto implements Serializable {
 	@Column(name = "id")
 	private Long id;
 	
-	@NotEmpty(message = "nao pode ser vazio")
+	@NotEmpty(message = "name nao pode ser vazio")
 	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@NotEmpty(message = "nao pode ser vazio")
+	@NotEmpty(message = "city nao pode ser vazio")
 	@Column(name = "city", nullable = false)
 	private String city;
 	
