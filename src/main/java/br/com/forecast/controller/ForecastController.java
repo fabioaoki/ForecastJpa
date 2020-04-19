@@ -54,7 +54,6 @@ public class ForecastController {
 			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
 			return new ResponseEntity<Response<CityForecastDto>>(response,HttpStatus.BAD_REQUEST);
 		}
-
 		response.setData(forecastService.newCity(cityForecastDto));
 		return new ResponseEntity<Response<CityForecastDto>>(response,HttpStatus.CREATED);
 	}
@@ -78,6 +77,16 @@ public class ForecastController {
 			return new ResponseEntity<CityForecastDto>(verify,HttpStatus.ACCEPTED);
 		}
 		return new ResponseEntity<CityForecastDto>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@RequestMapping(value="/weather/{id}",method = RequestMethod.DELETE)
+	public ResponseEntity<CityForecastDto> delete(@PathVariable(value= "id") long id) {
+		try {
+			forecastService.delete(id);
+			return new ResponseEntity<CityForecastDto>(HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 }
 

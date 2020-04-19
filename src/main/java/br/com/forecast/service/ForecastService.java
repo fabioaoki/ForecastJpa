@@ -18,6 +18,10 @@ public class ForecastService  {
 		CityForecastDto retorno = cityForecastRepository.findById(id);
 		return retorno;
 	}
+	
+	public void delete(long id) {
+		cityForecastRepository.deleteById(id);
+	}
 
 	public CityForecastDto newCity(CityForecastDto cityForecastDto) {
 		CityForecastDto retorno = cityForecastDto;
@@ -29,7 +33,7 @@ public class ForecastService  {
 	public ArrayList<CityForecastDto> getAll() {
 		ArrayList<CityForecastDto> retorno = (ArrayList<CityForecastDto>) cityForecastRepository.findAll();
 		return  retorno;
-	}
+	} 
 
 	public void save(CityForecastDto verify) {
 		cityForecastRepository.save(verify);
