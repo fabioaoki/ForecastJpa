@@ -57,7 +57,7 @@ public class ForecastController {
 		response.setData(forecastService.newCity(cityForecastDto));
 		return new ResponseEntity<Response<CityForecastDto>>(response,HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(value = "/weather/{id}",method = RequestMethod.PUT)
 	public ResponseEntity<CityForecastDto> alterInformation(@PathVariable (value = "id") long id, 
 			@RequestBody CityForecastDto cityForecastDto){
@@ -78,7 +78,7 @@ public class ForecastController {
 		}
 		return new ResponseEntity<CityForecastDto>(HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@RequestMapping(value="/weather/{id}",method = RequestMethod.DELETE)
 	public ResponseEntity<CityForecastDto> delete(@PathVariable(value= "id") long id) {
 		try {

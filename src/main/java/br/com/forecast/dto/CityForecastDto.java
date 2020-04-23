@@ -39,9 +39,6 @@ public class CityForecastDto implements Serializable {
 	@Column(name = "date_city")
 	private Date dateCity;
 
-	public CityForecastDto() {
-	}
-	
 	@PrePersist
     public void prePersist() {
         final Date atual = new Date();
