@@ -2,10 +2,10 @@ package br.com.forecast.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.forecast.dto.CityForecastDto;
+import br.com.forecast.entity.CityForecast;
 
-public interface CityForecastRepository extends JpaRepository<CityForecastDto, Long> {
+public interface CityForecastRepository extends JpaRepository<CityForecast, Long> {
 	
-	CityForecastDto findById(long id);
+	CityForecast findById(long id);
 	
 }
